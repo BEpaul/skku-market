@@ -33,3 +33,24 @@ header{
 #mainTitle{
     margin-bottom: 3rem;
 }
+
+.productList{
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-template-rows: auto;
+  grid-gap: 4rem;
+  margin: 3em;
+  align-content: center;
+  justify-content: center;
+
+}
+
+.productCard{
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  
+
+  border: 1px solid red;
+}
