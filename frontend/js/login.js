@@ -16,7 +16,7 @@ $(function () {
       },
     });
 
-    // location.href = "./list.html";
+    location.href = "./list.html";
   });
 
   $("#signup_btn").click(() => {
