@@ -1,12 +1,21 @@
 
 .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 5px;
     max-width: 99%;
+}
+#mainContents{
+    width: 70%;
+    height: 100%;
+    justify-content: center;
 }
 
 header{
     width: auto;
     font-family: 'Montserrat', sans-serif;
+    align-self: stretch;
 }
 #title{
     font-size: 1.25rem;
@@ -45,6 +54,11 @@ header{
     padding-bottom: 0.75rem;
 }
 
+#fileInputBox input{
+    margin-bottom: 1rem;
+    
+}
+
 #priceBox input{
     border: none;
 }
@@ -54,7 +68,7 @@ header{
 #postContentBox textarea{
     border: none;
     resize: none;
-    height: 6.25em;
+    height: 16.25em;
 }
 .btn{
     border: none;
