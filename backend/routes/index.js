@@ -1,15 +1,13 @@
-"use strict";
-
 const express = require("express");
 const router = express.Router();
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   console.log("req:", req);
-  res.send("Hello, World!");
-  //   res.render("index.ejs");
+  res.json({ message: "Hello World!" });
 });
 
-app.get("/login", (req, res) => {
+router.get("/login", (req, res) => {
   res.send("this is login~~");
 });
+
 module.exports = router;
