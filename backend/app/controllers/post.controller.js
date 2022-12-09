@@ -1,4 +1,5 @@
 const Post = require("../models/posts.model");
+const UserPost = require("../models/userPosts.model");
 
 // 새 객체 생성
 exports.create = (req,res)=>{
@@ -14,12 +15,10 @@ exports.create = (req,res)=>{
         price: req.body.price,
         description: req.body.description,
     });
+
     const posting_user_id = req.body.user_id;
     //user existence test////////////////////////////////////////////////////
     ///////////////////////////////////////
-
-    //userPost update///////////////////////////////////////
-    ////////////////////////////////////////////////////
 
     // 데이터베이스에 저장
     Post.create(post, (err, data) =>{
@@ -30,9 +29,30 @@ exports.create = (req,res)=>{
             });
         }
         else{
-            res.status(201).send({message: "post created", ...data})
+            const created_post = data;
+            
+
+            //userPost update
+            const userPost = new UserPost({
+              user_id: posting_user_id,
+              post_id: created_post.id
+            })
+            UserPost.create(userPost, (err, data) =>{
+              if(err){
+                  res.status(500).send({
+                      message:
+                      err.message || "Some error occured while creating the userPost."
+                  });
+              }
+              else{
+                  res.status(201).send({message: "post created, userPost created", ...created_post});
+              }
+            })
         }
     })
+
+    
+
 };
 
 // 전체 조회 

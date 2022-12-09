@@ -1,5 +1,5 @@
-const Comment = require("../models/comments.model");
-const User = require("../models/users.model");
+const Post = require("../models/posts.model");
+const UserPost = require("../models/userPosts.model");
 
 // 새 객체 생성
 exports.create = (req,res)=>{
@@ -9,38 +9,33 @@ exports.create = (req,res)=>{
         });
     };
 
-    const newComment = new Comment({
-        post_id: req.body.post_id,
-        user_id_from: req.body.user_id_from,
-        user_id_to: req.body.user_id_to,
-        comment: req.body.comment,
-        
+    const userPost = new UserPost({
+        user_id: req.body.user_id,
+        post_id: req.body.post_id
     });
-    //user existence test
-    //const from_user = User.findByID()
-    //const to_user = User.findByID()
 
     // 데이터베이스에 저장
-    Comment.create(newComment, (err, data) =>{
+    UserPost.create(userPost, (err, data) =>{
         if(err){
             res.status(500).send({
                 message:
-                err.message || "Some error occured while creating the comment."
+                err.message || "Some error occured while creating the userPost."
             });
         }
         else{
-            res.status(201).send({message: "comment created", ...data})
+            res.status(201).send({message: "userPost created", ...data});
+            post = data;
         }
     })
 };
 
 // 전체 조회 
 exports.findAll = (req,res)=>{
-    Comment.getAll((err, data) => {
+    UserPost.getAll((err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while retrieving comments."
+              err.message || "Some error occurred while retrieving UserPost."
           });
         else res.send(data);
       });
@@ -48,15 +43,15 @@ exports.findAll = (req,res)=>{
 
 // id로 조회
 exports.findOne = (req,res)=>{
-    Comment.findByID(req.params.commentId, (err, data) => {
+    UserPost.findByID(req.params.postId, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found comment with id ${req.params.commentId}.`
+              message: `Not found post with id ${req.params.postId}.`
             });
           } else {
             res.status(500).send({
-              message: "Error retrieving comment with id " + req.params.commentId
+              message: "Error retrieving post with id " + req.params.postId
             });
           }
         } else res.send(data);
@@ -72,18 +67,18 @@ exports.update = (req,res)=>{
     });
   }
 
-  Comment.updateById(
-    req.params.commentId,
+  Post.updateById(
+    req.params.postId,
     new Post(req.body),
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found post with id ${req.params.commentId}.`
+            message: `Not found post with id ${req.params.postId}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating post with id " + req.params.commentId
+            message: "Error updating post with id " + req.params.postId
           });
         }
       } else res.send(data);
@@ -93,30 +88,30 @@ exports.update = (req,res)=>{
 
 // id로 삭제
 exports.delete = (req,res)=>{
-    Comment.remove(req.params.commentId, (err, data) => {
+    Post.remove(req.params.postId, (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found post with id ${req.params.commentId}.`
+              message: `Not found post with id ${req.params.postId}.`
             });
           } else {
             res.status(500).send({
-              message: "Could not delete post with id " + req.params.commentId
+              message: "Could not delete post with id " + req.params.postId
             });
           }
-        } else res.send({ message: `the comment was deleted successfully!` });
+        } else res.send({ message: `post was deleted successfully!` });
       });
 };
 
 // 전체 삭제
 exports.deleteAll = (req,res)=>{
-    Comment.removeAll((err, data) => {
+    Post.removeAll((err, data) => {
         if (err)
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all comments."
+              err.message || "Some error occurred while removing all post."
           });
-        else res.send({ message: `All comments were deleted successfully!` });
+        else res.send({ message: `All post were deleted successfully!` });
       });
 };
  

@@ -56,3 +56,5 @@ User.findByID = (userID, result) => {
 //     result(null, res);
 //   });
 // };
+
+module.exports = User;

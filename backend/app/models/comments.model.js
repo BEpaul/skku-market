@@ -1,7 +1,7 @@
 const sql = require("./db.js");
 
 // 생성자 
-const Post = function(Comment){
+const Comment = function(Comment){
     this.post_id = Comment.post_id;
     this.user_id_from = Comment.user_id_from;
     this.user_id_to = Comment.user_id_to;
@@ -11,7 +11,7 @@ const Post = function(Comment){
 };
 
 // customer 튜플 추가 
-Post.create = (newComment, result)=>{
+Comment.create = (newComment, result)=>{
     sql.query("INSERT INTO Comments SET ?", newComment, (err, res)=>{
         if(err){
             console.log("error: ", err);
@@ -25,7 +25,7 @@ Post.create = (newComment, result)=>{
 };
 
 // customer id로 조회
-Post.findByID = (commentId, result)=>{
+Comment.findByID = (commentId, result)=>{
     sql.query('SELECT * FROM Comments WHERE comment_id = ?',commentId, (err, res)=>{
         if(err){
             console.log("error: ", err);
@@ -45,7 +45,7 @@ Post.findByID = (commentId, result)=>{
 };
 
 // Posts 전체 조회
-Post.getAll = result =>{
+Comment.getAll = result =>{
     sql.query('SELECT * FROM Comments', (err, res)=>{
         if(err){
             console.log("error: ", err);
@@ -59,7 +59,7 @@ Post.getAll = result =>{
 };
 
 // Posts id로 수정
-Post.updateByID = (commentId, Comment, result)=>{
+Comment.updateByID = (commentId, Comment, result)=>{
     sql.query('UPDATE Comments SET comment = ? WHERE comment_id = ?', 
     Comment.comment, (err, res)=>{
         if(err){
@@ -80,7 +80,7 @@ Post.updateByID = (commentId, Comment, result)=>{
 };
 
 // post id로 삭제
-Post.remove = (id, result)=>{
+Comment.remove = (id, result)=>{
     sql.query('DELETE FROM Comments WHERE comment_id = ?',id, (err, res)=>{
         if(err){
             console.log("error: ", err);
@@ -100,7 +100,7 @@ Post.remove = (id, result)=>{
 };
 
 // posts 전체 삭제
-Post.removeAll = result =>{
+Comment.removeAll = result =>{
     sql.query('DELETE FROM Comments',(err, res)=>{
         if(err){
             console.log("error: ", err);
