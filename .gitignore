@@ -178,3 +178,4 @@ dist
 
 # db information
 .backend/app/config/db.config.js
+db.config.js
