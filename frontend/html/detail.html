@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/detail.css" type="text/css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+
     <title>detail</title>
 </head>
 
@@ -19,48 +24,65 @@
     <div class="container">
         <!-- nav bar -->
         <header id="header" class="d-flex flex-row justify-content-between">
-            <div id="title">
+            <a href="./list.html" id="title">
                 SKKU Market
-            </div>
-            <div id="headerBtn" class="d-flex flex-row">
-                <div id="login" class="mx-2">
-                    <a href="./frontend/html/login.html">login</a>
-                </div>
-                <div id="userRegister">
-                    <a href="./frontend/html/userRegister.html">sign up</a>
-                </div>
-            </div>
+            </a>
         </header>
         <!-- body -->
-        <div class="body_part">
-            <!-- contents -->
-            <div class="contents">
-                <!-- image -->
-                <img src="../assets/tree.jpeg" alt="tree">
 
-                <!-- author -->
-                <div class="author">작성자</div>
+        <!-- contents -->
+        <div class="contents">
+            <!-- image -->
+            <img src="../assets/tree.jpeg" alt="tree">
 
-                <!-- title -->
-                <div class="title">
-                    제목
+            <!-- author -->
+
+            <div class="author">
+                <i class="bi bi-person-circle" id="post_userInfo"></i>
+                author
+            </div>
+
+            <!-- title -->
+            <div class="title">
+                title
+            </div>
+
+            <!-- content -->
+            <div class="content">content</div>
+
+            <!-- comments -->
+            <div class="comments">
+                <div id="comment_headLine">comment</div>
+                <ul class="comment_list">
+
+                </ul>
+
+                <!-- Comments Form -->
+                <div class="card my-4">
+                    <h5 class="card-header">Leave a Comment:</h5>
+                    <div class="card-body">
+                        <!-- <form name="comment-form" action="/board/comment/write" method="post" autocomplete="off"> -->
+                        <form name="comment-form" autocomplete="off">
+                            <div class="form-group">
+                                <input type="hidden" name="idx" />
+                                <div class="com_userInfo"><i class="bi bi-person-circle" id="user_profile"></i>
+                                    junehyon</div>
+                                <textarea name="content" class="form-control" rows="3"></textarea>
+                            </div>
+                            <a href="#" id="reply_btn">reply</a>
+                        </form>
+                    </div>
                 </div>
 
-                <!-- content -->
-                <div class="content">본문 내용</div>
-
-                <!-- comments -->
-                <div class="comments">
-                    댓글
-                </div>
-                <!-- footer -->
-                <div class="footer">
-                    Copyright 2022. All right reserved.
-                </div>
+            </div>
+            <!-- footer -->
+            <div class="footer">
+                Copyright 2022. All right reserved.
             </div>
         </div>
 
     </div>
+    <script src="../js/detail.js"></script>
 </body>
 
 </html>
