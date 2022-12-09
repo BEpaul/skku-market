@@ -10,7 +10,7 @@ const Post = function(post){
     this.last_modified = new Date();
 };
 
-// customer 튜플 추가 
+// Post 튜플 추가 
 Post.create = (newPost, result)=>{
     sql.query("INSERT INTO Posts SET ?", newPost, (err, res)=>{
         if(err){
@@ -24,7 +24,7 @@ Post.create = (newPost, result)=>{
     });
 };
 
-// customer id로 조회
+// Post id로 조회
 Post.findByID = (postId, result)=>{
     sql.query('SELECT * FROM Posts WHERE post_id = ?',postId, (err, res)=>{
         if(err){
