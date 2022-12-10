@@ -41,7 +41,7 @@ exports.findAll = (req, res) => {
 };
 
 // post_id 조회
-exports.findOne = (req, res) => {
+exports.getPostLists = (req, res) => {
   UserPost.findByPostId(parseInt(req.params.post_id), (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -51,6 +51,23 @@ exports.findOne = (req, res) => {
       } else {
         res.status(500).send({
           message: "Error retrieving post with id " + req.params.post_id,
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+// user_id로 조회
+exports.getUserLists = (req, res) => {
+  UserPost.findByUserId(parseInt(req.params.user_id), (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found post with id ${req.params.user_id}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving post with id " + req.params.user_id,
         });
       }
     } else res.send(data);
