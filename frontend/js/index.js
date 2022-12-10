@@ -18,6 +18,15 @@ const logout = () =>{
     location.href = "." 
 }
 
+const onNewPost =()=>{
+    const curr_user_id = sessionStorage.getItem("user_id");
+    if(curr_user_id){
+        location.href = "./frontend/html/newProduct.html";
+    }else{
+        location.href = "./frontend/html/login.html";
+    }
+}
+
 const loadProductList = async () => {
   $.ajax({
     type: "GET",

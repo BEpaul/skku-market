@@ -62,3 +62,11 @@ const convertBase64 = (file) =>{
     })
     
 }
+
+$(document).ready(function () {
+    const curr_user_id = sessionStorage.getItem("user_id");
+    console.log(curr_user_id)
+    if(!curr_user_id){
+        location.href = "../html/login.html";
+    }
+});
