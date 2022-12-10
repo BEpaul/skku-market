@@ -1,18 +1,20 @@
-const express = require('express');
+const express = require("express");
 const comments = require("../app/controllers/comment.controller");
- 
+
 const router = express.Router();
- 
-router.get('/', comments.findComments);
 
-router.get('/:commentId', comments.findOne);
+router.get("/", comments.findComments);
 
-router.post('/', comments.create);
+// router.get("/post/:post_id", comments.getByPostId);
 
-router.patch('/:commentId', comments.update);
+router.get("/:commentId", comments.findOne);
 
-router.delete('/:commentId', comments.delete);
+router.post("/", comments.create);
 
-router.delete('/', comments.deleteAll);
- 
+router.patch("/:commentId", comments.update);
+
+router.delete("/:commentId", comments.delete);
+
+router.delete("/", comments.deleteAll);
+
 module.exports = router;
