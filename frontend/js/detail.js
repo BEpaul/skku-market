@@ -1,14 +1,40 @@
 // load
 $(function () {
+  // get path parameter
+  const urlStr = window.location.href;
+  const url = new URL(urlStr);
+  const urlParams = url.searchParams;
+
+  const qsPostId = urlParams.get("post_id");
+  console.log(qsPostId);
+  console.log(typeof qsPostId);
+
+  // get user_id from post_id
   $.ajax({
     type: "GET",
-    url: "/",
+    url: `http://localhost:3000/userposts/post/${qsPostId}`,
     data: "",
-    dataType: "dataType",
+    dataType: "json",
     success: (response) => {
       console.log(response);
     },
-    error: () => {},
+    error: (err) => {
+      console.log(err);
+    },
+  });
+
+  // get post information from post_id
+  $.ajax({
+    type: "GET",
+    url: `http://localhost:3000/posts/${qsPostId}`,
+    data: "",
+    dataType: "json",
+    success: (response) => {
+      console.log(response);
+    },
+    error: (err) => {
+      console.log(err);
+    },
   });
 });
 
@@ -27,7 +53,8 @@ $("#reply_btn").click((e) => {
     url: "/",
     data: "data",
     dataType: "dataType",
-    success: function (response) {},
+    success: (response) => {},
+    error: (err) => {},
   });
 
   $(".comment_list").append(
