@@ -3,7 +3,10 @@
     margin: 5px;
     max-width: 99%;
 }
-
+svg{
+  color: #0b471b;
+  padding-bottom: 1px;
+}
 header{
     width: auto;
     font-family: 'Montserrat', sans-serif;
@@ -13,21 +16,33 @@ header{
     font-weight: 800;
     color:#0b471b;
 }
-#headerBtn a{
+
+#headerBtn-login, #headerBtn-logout{
+  display: flex;
+  flex-direction: row;
+}
+#headerBtn-logout{
+  display: none;
+}
+
+#headerBtn-login a, #headerBtn-logout a{
     text-decoration: none;
     
 }
-#headerBtn a:link {
+#headerBtn-login a:link, #headerBtn-logout a:link {
   color : #0b471b;
 }
-#headerBtn a:visited {
+#headerBtn-login a:visited, #headerBtn-logout a:visited {
   color : #0b471b;
 }
-#headerBtn a:hover {
+#headerBtn-login a:hover, #headerBtn-logout a:hover {
   color : #0b471b;
 }
-#headerBtn a:active {
+#headerBtn-login a:active, #headerBtn-logout a:active {
   color : #0b471b
+}
+#userInfo, #login{
+  margin-right: 1.5rem;
 }
 
 #mainTitle{
@@ -52,9 +67,6 @@ header{
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
-  
-
-  
 }
 
 .productImgBox{
@@ -64,4 +76,9 @@ header{
   border: 1px solid rgb(216, 211, 211);
   border-radius: 15px;
   margin-bottom: 15px;
+}
+
+#productListPlaceHolder{
+  color: rgb(212, 212, 212);
+  margin: auto;
 }

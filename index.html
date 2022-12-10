@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -16,12 +19,24 @@
             <div id="title">
                 SKKU Market
             </div>
-            <div id="headerBtn" class="d-flex flex-row">
-              <div id="login" class="mx-2">
+            <div id="headerBtn-login" >
+              <div id="login">
                 <a href="./frontend/html/login.html">login</a>
               </div>
               <div id="userRegister">
                 <a href="./frontend/html/signup.html">register</a>
+              </div>
+            </div>
+
+            <div id="headerBtn-logout" >
+              <div id="userInfo" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                </svg>
+                <a id="userInfoText" href="javascript:void(0)">user info</a>
+              </div>
+              <div id="logout">
+                <a href="javascript:void(0)" onclick="logout();">logout</a>
               </div>
             </div>
         </header>
@@ -30,7 +45,7 @@
             <h1>Hot Second-Handed Products</h1>
           </div>
           <div id="productList" class="d-flex flex-wrap">
-
+            <h1 id="productListPlaceHolder">Nothing to display...</h1>
           </div>
 
         </div>

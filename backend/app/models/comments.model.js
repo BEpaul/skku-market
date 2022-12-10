@@ -24,9 +24,49 @@ Comment.create = (newComment, result)=>{
     });
 };
 
-// customer id로 조회
+// comment id로 조회
 Comment.findByID = (commentId, result)=>{
     sql.query('SELECT * FROM Comments WHERE comment_id = ?',commentId, (err, res)=>{
+        if(err){
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+
+        if(res.length){
+            console.log("found comment: ", res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        // 결과가 없을 시 
+        result({kind: "not_found"}, null);
+    });
+};
+
+// user id로 조회
+Comment.findByUserId = (user_id, result)=>{
+    sql.query('SELECT * FROM Comments WHERE user_id = ?',user_id, (err, res)=>{
+        if(err){
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+
+        if(res.length){
+            console.log("found comment: ", res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        // 결과가 없을 시 
+        result({kind: "not_found"}, null);
+    });
+};
+
+// post id로 조회
+Comment.findByPostId = (post_id, result)=>{
+    sql.query('SELECT * FROM Comments WHERE post_id = ?',post_id, (err, res)=>{
         if(err){
             console.log("error: ", err);
             result(err, null);
