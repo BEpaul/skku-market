@@ -49,6 +49,9 @@ header{
 #userInfo, #login{
     margin-right: 1.5rem;
 }
+svg{
+    color: #0b471b;
+}
 
 #mainTitle{
     margin-bottom: 3rem;
