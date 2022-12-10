@@ -25,6 +25,8 @@ const loadUserInfo = async () => {
             $("#userName").text(response.user_name);
             $("#userNickname").text(response.user_nickname);
             $("#userEmail").text(response.user_email);
+            $("#userInfoText").text(response.user_nickname);
+
         },
         error: () => {
             console.log("Get userpost list failed!");

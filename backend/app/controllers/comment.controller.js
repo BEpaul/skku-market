@@ -52,7 +52,7 @@ exports.findComments = (req, res) => {
     else res.send(comments_user_id);
   }
   else if(post_id){
-    console.log("POST POST POST!")
+    //console.log("POST POST POST!")
     const comments_post_id = this.getByPostId(post_id);
     if(!comments_post_id){
       console.log("sending undefined res...")

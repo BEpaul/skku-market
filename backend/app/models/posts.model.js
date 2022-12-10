@@ -34,7 +34,7 @@ Post.findByID = (postId, result)=>{
         }
 
         if(res.length){
-            console.log("found post: ", res[0]);
+            //console.log("found post: ", res[0]);
             result(null, res[0]);
             return;
         }
