@@ -70,14 +70,22 @@ img {
   text-align: left;
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 }
 
 .content,
 .title,
-.comments,
+.comments {
+  padding: 5px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid lightgray;
+}
+
 .price {
+  font-weight: 550;
   padding: 5px;
   text-align: left;
   margin-top: 10px;

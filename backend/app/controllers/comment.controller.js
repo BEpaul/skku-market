@@ -43,11 +43,14 @@ exports.findComments = (req, res) => {
         if (err.kind === "not_found") {
           res.status(200).send({
             message: `Not found comment with id ${user_id}}.`,
+
             result: []
+
           });
         } else {
           res.status(500).send({
             message: "Error updating post with id " + req.params.commentId,
+
           });;
         }
       }
@@ -68,6 +71,7 @@ exports.findComments = (req, res) => {
 
   }
   else if (post_id) {
+
     //console.log("POST POST POST!")
     // const comments_post_id = this.getByPostId(post_id);
     Comment.findByPostId(post_id, (err, data) => {
@@ -75,11 +79,14 @@ exports.findComments = (req, res) => {
         if (err.kind === "not_found") {
           res.status(200).send({
             message: `Not found comment with id ${post_id}}.`,
+
             result: []
+
           });
         } else {
           res.status(500).send({
             message: "Error updating post with id " + req.params.commentId,
+
           });;
         }
       }
@@ -105,11 +112,13 @@ exports.findComments = (req, res) => {
           message:
             err.message || "Some error occurred while retrieving comments.",
         });
+
       }
       else res.send({result: data});
     });
   }
 };
+
 
 
 
@@ -130,7 +139,6 @@ exports.findOne = (req, res) => {
     } else res.send(data);
   });
 };
-
 
 // id로 갱신
 exports.update = (req, res) => {
