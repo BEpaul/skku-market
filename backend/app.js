@@ -9,12 +9,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
+const usersRouter = require("./routes/user.routes");
 const postsRouter = require("./routes/post.routes");
+const commentsRouter = require("./routes/comment.routes");
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
+app.use("/comments", commentsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

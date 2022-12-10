@@ -11,7 +11,7 @@ const User = function (user) {
 
 // customer 튜플 추가 (회원가입)
 User.create = (newUser, result) => {
-  sql.query("INSERT INTO users SET ?", newUser, (err, res) => {
+  sql.query("INSERT INTO Users SET ?", newUser, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -25,7 +25,7 @@ User.create = (newUser, result) => {
 
 // user id로 조회 (로그인)
 User.findByID = (userID, result) => {
-  sql.query("SELECT * FROM users WHERE id = ?", userID, (err, res) => {
+  sql.query("SELECT * FROM Users WHERE user_id = ?", userID, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
