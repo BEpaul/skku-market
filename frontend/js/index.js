@@ -36,11 +36,11 @@ const loadProductList = async () => {
     success: (response) => {
       //console.log(response);
       if(response.length>0){
-        const productList_div = document.querySelector("#productList");
+        const productList_div = document.querySelector(".productList");
         productList_div.innerHTML = "";
       }
       
-      console.log("product list : " + response);
+      //console.log("product list : " + response);
       response.forEach((post) => {
         console.log("post each : " + post.title);
         $.ajax({
@@ -49,7 +49,7 @@ const loadProductList = async () => {
           //data: "hellow",
           dataType: "json",
           success: (response) => {
-            console.log(response);
+            //console.log(response);
             renderProductCard(post, response);
           },
           error: (err) => {
@@ -66,19 +66,23 @@ const loadProductList = async () => {
   });
 };
 
-const getCommentsFromDB = async (post_id) => {};
 
 const renderProductCard = (post, comments) => {
+    //console.log(post.image)
+    const buf = post.image;
+    //console.log(JSON.stringify(b64))
+    
   //https://stackoverflow.com/questions/4478863/show-image-from-blob-in-javascript
-  const productList_div = document.querySelector("#productList");
-  productList_div.innerHTML = `
+  const productList_div = document.querySelector(".productList");
+  productList_div.innerHTML += `
     <div class="productCard" id="${post.post_id}">
-        <img src="${post.image}" alt="product image">
-        <div class="cardTitle">${post.description}</div>
+        <img class="productImgBox" src="${post.image}" alt="product image">
+        <div class="cardTitle">${post.title}</div>
         <div class="price">${post.price}원</div>
         <div class="commentCount">댓글 수 : ${comments.length}</div>
     </div>
     `;
+    
   return;
 };
 

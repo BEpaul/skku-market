@@ -14,7 +14,7 @@ const onAddPost = async () =>{
     const description = document.getElementById("floatingTextarea").value;
     
 
-    const base64 = convertBase64(img)
+    convertBase64(img)
         .then(base64=>{
             console.log("img = "+base64)
             console.log("title = "+title)
@@ -28,7 +28,7 @@ const onAddPost = async () =>{
                 body: JSON.stringify({
                     user_id: curr_user_id,
                     title: title,
-                    image: img,
+                    image: base64,
                     price: price,
                     description: description,
                 }),
@@ -36,7 +36,7 @@ const onAddPost = async () =>{
                 if(response.status === 201){
                     console.log("201" + response);
                     alert("successfully added!!")
-                    location.href='../html/detail.html/'+response.post_id;
+                    location.href='./detail.html/'+response.post_id;
                 }
                 else{
                     console.log("bad: " + response);
