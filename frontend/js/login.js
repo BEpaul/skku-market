@@ -1,38 +1,40 @@
-$(function () {
-  console.log("hello");
+$("#login_button").click(() => {
+  let email = $("#floatingInput").val();
+  let password = $("#floatingPassword").val();
 
-  $("#login_button").click(() => {
-    console.log("clicked!");
+  let data = {
+    user_email: email,
+    user_password: password,
+  };
+
+  if (email == "") {
+    alert("Please input email!");
+  } else if (password == "") {
+    alert("Please input password");
+  } else {
     $.ajax({
-      type: "GET",
-      url: "http://localhost:3000/",
-      data: "hellow",
-      dataType: "text",
+      type: "POST",
+      url: `http://localhost:3000/users/email`,
+      data,
+      dataType: "json",
       success: (response) => {
-        console.log(response);
+        if (!response.length) {
+          alert("Successful login!");
+          console.log(response.user_id);
+          console.log(response.user_nickname);
+          sessionStorage.setItem("user_id", response.user_id);
+          sessionStorage.setItem("nickname", response.user_nickname);
+          history.go(-1);
+        }
       },
-      error: () => {
-        console.log("failed!");
+      error: (err) => {
+        console.log(err);
+        alert("no user info!");
       },
     });
+  }
+});
 
-    location.href = "./list.html";
-  });
-
-  $("#signup_btn").click(() => {
-    console.log("signUp");
-    //   $.ajax({
-    //     type: "GET",
-    //     url: "http://localhost:3000/login",
-    //     data: "asd",
-    //     dataType: "text",
-    //     success: (response) => {
-    //       console.log(response);
-    //     },
-    //     error: () => {
-    //       console.log("failed...");
-    //     },
-    //   });
-    location.href = "signup.html";
-  });
+$("#signup_btn").click(() => {
+  location.href = "signup.html";
 });
