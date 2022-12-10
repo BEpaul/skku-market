@@ -16,6 +16,8 @@ exports.create = (req,res)=>{
         description: req.body.description,
     });
 
+    console.log(post.image)
+
     const posting_user_id = req.body.user_id;
     //user existence test////////////////////////////////////////////////////
     ///////////////////////////////////////
@@ -140,6 +142,18 @@ exports.deleteAll = (req,res)=>{
         else res.send({ message: `All post were deleted successfully!` });
       });
 };
+
+// bas64를 blob으로 변환해주는 함수
+async function  b64toBlob(b64Data) {
+  const buf = Buffer.from(b64Data, "base64")
+  return buf;
+}
+
+
+
+
+
+
  
 
  
