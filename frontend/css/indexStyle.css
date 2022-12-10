@@ -49,6 +49,21 @@ header{
     margin-bottom: 3rem;
 }
 
+#newPostDiv{
+  width: 90%;
+  justify-content:flex-end;
+}
+
+#addNewPost{
+  font-size: 20px;
+  color: white;
+  background-color: #0b471b;
+  border: none;
+  border-radius: 8.75px;
+  padding: 5px 10px;
+}
+
+
 .productList{
   display: grid;
   grid-template-columns: repeat(4, 300px);
