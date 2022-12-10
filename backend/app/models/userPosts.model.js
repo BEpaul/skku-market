@@ -30,8 +30,8 @@ UserPost.findByUserId = (User_id, result)=>{
         }
 
         if(res.length){
-            console.log("found UserPosts: ", res[0]);
-            result(null, res[0]);
+            console.log("found UserPosts: ", res);
+            result(null, res);
             return;
         }
 

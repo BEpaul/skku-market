@@ -43,27 +43,35 @@ exports.findComments = (req, res) => {
         if (err.kind === "not_found") {
           res.status(200).send({
             message: `Not found comment with id ${user_id}}.`,
-            result: [],
+
+            result: []
+
           });
         } else {
           res.status(500).send({
             message: "Error updating post with id " + req.params.commentId,
-          });
+
+          });;
         }
-      } else {
+      }
+      else {
         const comments_user_id = data;
 
-        console.log(comments_user_id);
+        console.log(comments_user_id)
         if (comments_user_id.length < 1) {
-          console.log("sending undefined res...");
-          res.send({ result: [] });
-        } else {
-          console.log("sending not empty res...");
-          res.send({ result: comments_user_id });
+          console.log("sending undefined res...")
+          res.send({result:[]});
+        }
+        else {
+          console.log("sending not empty res...")
+          res.send({result: comments_user_id});
         }
       }
     });
-  } else if (post_id) {
+
+  }
+  else if (post_id) {
+
     //console.log("POST POST POST!")
     // const comments_post_id = this.getByPostId(post_id);
     Comment.findByPostId(post_id, (err, data) => {
@@ -71,26 +79,32 @@ exports.findComments = (req, res) => {
         if (err.kind === "not_found") {
           res.status(200).send({
             message: `Not found comment with id ${post_id}}.`,
-            result: [],
+
+            result: []
+
           });
         } else {
           res.status(500).send({
             message: "Error updating post with id " + req.params.commentId,
-          });
+
+          });;
         }
-      } else {
+      }
+      else {
         const comments_post_id = data;
 
-        console.log(comments_post_id);
+        console.log(comments_post_id)
         if (comments_post_id.length < 1) {
-          console.log("sending undefined res...");
-          res.send({ result: [] });
-        } else {
-          console.log("sending not empty res...");
-          res.send({ result: comments_post_id });
+          console.log("sending undefined res...")
+          res.send({result:[]});
+        }
+        else {
+          console.log("sending not empty res...")
+          res.send({result:comments_post_id});
         }
       }
     });
+
   } else {
     Comment.getAll((err, data) => {
       if (err) {
@@ -98,10 +112,16 @@ exports.findComments = (req, res) => {
           message:
             err.message || "Some error occurred while retrieving comments.",
         });
-      } else res.send({ result: data });
+
+      }
+      else res.send({result: data});
     });
   }
 };
+
+
+
+
 
 // id로 조회
 exports.findOne = (req, res) => {

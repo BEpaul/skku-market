@@ -49,47 +49,45 @@ Comment.findByID = (commentId, result) => {
 };
 
 // user id로 조회
-Comment.findByUserId = (user_id, result) => {
-  sql.query(
-    "SELECT * FROM Comments WHERE user_id_from = ?",
-    user_id,
-    (err, res) => {
-      if (err) {
-        console.log("error: ", err);
-        result(err, null);
-        return;
-      }
 
-      if (res.length) {
-        console.log("found comment: ", res[0]);
-        result(null, res[0]);
-        return;
-      }
+Comment.findByUserId = (user_id, result)=>{
+    sql.query('SELECT * FROM Comments WHERE user_id_from = ?',user_id, (err, res)=>{
+        if(err){
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
 
-      // 결과가 없을 시
-      result({ kind: "not_found" }, null);
-    }
-  );
+        if(res.length){
+            console.log("found comment: ", res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        // 결과가 없을 시 
+        result({kind: "not_found"}, null);
+    });
 };
 
 // post id로 조회
-Comment.findByPostId = (post_id, result) => {
-  sql.query("SELECT * FROM Comments WHERE post_id = ?", post_id, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
-    }
+Comment.findByPostId = (post_id, result)=>{
+    sql.query('SELECT * FROM Comments WHERE post_id = ?',post_id, (err, res)=>{
+        if(err){
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
 
-    if (res.length) {
-      console.log("found comment: ", res);
-      result(null, res);
-      return;
-    }
+        if(res.length){
+            console.log("found comment: ", res);
+            result(null, res);
+            return;
+        }
 
-    // 결과가 없을 시
-    result({ kind: "not_found" }, null);
-  });
+        // 결과가 없을 시 
+        result({kind: "not_found"}, null);
+    });
+
 };
 
 // Posts 전체 조회
