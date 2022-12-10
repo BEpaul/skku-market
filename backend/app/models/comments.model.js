@@ -46,7 +46,7 @@ Comment.findByID = (commentId, result)=>{
 
 // user id로 조회
 Comment.findByUserId = (user_id, result)=>{
-    sql.query('SELECT * FROM Comments WHERE user_id = ?',user_id, (err, res)=>{
+    sql.query('SELECT * FROM Comments WHERE user_id_from = ?',user_id, (err, res)=>{
         if(err){
             console.log("error: ", err);
             result(err, null);
@@ -74,8 +74,8 @@ Comment.findByPostId = (post_id, result)=>{
         }
 
         if(res.length){
-            console.log("found comment: ", res[0]);
-            result(null, res[0]);
+            console.log("found comment: ", res);
+            result(null, res);
             return;
         }
 

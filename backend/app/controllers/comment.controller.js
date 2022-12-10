@@ -37,75 +37,78 @@ exports.findComments = (req, res) => {
   const user_id = req.query.user_id;
   const post_id = req.query.post_id;
 
-  if(user_id){
-    const comments_user_id = this.getByUserId(user_id);
-    if(!comments_user_id){
-      res.send([]);
-    }
-    else if(comments_user_id.kind){
-      console.log(comments_user_id.message);
-      res.status(500).send({
-        message:
-          comments_user_id.message || "Some error occurred while retrieving comments.",
-      });
-    }
-    else res.send(comments_user_id);
+  if (user_id) {
+    Comment.findByUserId(user_id, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found comment with id ${req.params.commentId}.`,
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating post with id " + req.params.commentId,
+          });;
+        }
+      }
+      else {
+        const comments_user_id = data;
+
+        console.log(comments_user_id)
+        if (comments_user_id.length < 1) {
+          console.log("sending undefined res...")
+          res.send({result:[]});
+        }
+        else {
+          console.log("sending not empty res...")
+          res.send({result: comments_user_id});
+        }
+      }
+    });
+
   }
-  else if(post_id){
+  else if (post_id) {
     //console.log("POST POST POST!")
-    const comments_post_id = this.getByPostId(post_id);
-    if(!comments_post_id){
-      console.log("sending undefined res...")
-      res.send([]);
-    }
-    else if(comments_post_id.kind){
-      console.log(comments_post_id.message);
-      console.log("sending undefined err...")
-      res.status(500).send({
-        message:
-          comments_post_id.message || "Some error occurred while retrieving comments.",
-      });
-    }
-    else {
-      console.log("sending not empty res...")
-      res.send(comments_post_id);
-    }
-  }else{
+    // const comments_post_id = this.getByPostId(post_id);
+    Comment.findByPostId(post_id, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found comment with id ${req.params.commentId}.`,
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating post with id " + req.params.commentId,
+          });;
+        }
+      }
+      else {
+        const comments_post_id = data;
+
+        console.log(comments_post_id)
+        if (comments_post_id.length < 1) {
+          console.log("sending undefined res...")
+          res.send({result:[]});
+        }
+        else {
+          console.log("sending not empty res...")
+          res.send({result:comments_post_id});
+        }
+      }
+    });
+
+  } else {
     Comment.getAll((err, data) => {
-      if (err){
+      if (err) {
         res.status(500).send({
           message:
             err.message || "Some error occurred while retrieving comments.",
         });
       }
-      else res.send(data);
+      else res.send({result: data});
     });
   }
 };
-//user_id로 조회
-exports.getByUserId = (user_id) => {
-  Comment.findByUserId(user_id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        return err;
-      } else {
-        return err;
-      }
-    } else return data;
-  });
-};
-//post_id로 조회
-exports.getByPostId = (post_id) => {
-  Comment.findByPostId(post_id, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        return err;
-      } else {
-        return err;
-      }
-    } else return data;
-  });
-};
+
 
 
 
