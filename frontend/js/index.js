@@ -75,7 +75,7 @@ const renderProductCard = (post, comments) => {
   //https://stackoverflow.com/questions/4478863/show-image-from-blob-in-javascript
   const productList_div = document.querySelector(".productList");
   productList_div.innerHTML += `
-    <div class="productCard" id="${post.post_id}">
+    <div class="productCard" id="${post.post_id}" onclick='location.href="./frontend/html/detail.html?post_id=${post.post_id}"'>
         <img class="productImgBox" src="${post.image}" alt="product image">
         <div class="cardTitle">${post.title}</div>
         <div class="price">${post.price}원</div>
