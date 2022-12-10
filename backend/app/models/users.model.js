@@ -23,7 +23,7 @@ User.create = (newUser, result) => {
   });
 };
 
-// user id로 조회 (로그인)
+// user id로 조회
 User.findByID = (userID, result) => {
   sql.query("SELECT * FROM Users WHERE user_id = ?", userID, (err, res) => {
     if (err) {
@@ -41,6 +41,27 @@ User.findByID = (userID, result) => {
     // 결과가 없을 시
     result({ kind: "not_found" }, null);
   });
+};
+
+// user email로 조회 (로그인)
+User.findByEmail = (userEmail, result) => {
+  sql.query(
+    "SELECT * FROM Users WHERE user_email = ?",
+    userEmail,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+
+      if (res.length) {
+        console.log("found user: ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+    }
+  );
 };
 
 // // user 전체 조회

@@ -51,6 +51,23 @@ exports.findOne = (req, res) => {
   });
 };
 
+// email로 조회
+exports.findEmail = (req, res) => {
+  User.findByEmail(req.params.user_email, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found user with email ${req.params.user_email}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving user with email " + req.params.user_email,
+        });
+      }
+    } else res.send(data);
+  });
+};
+
 // id로 갱신
 // exports.update = (req, res) => {
 //   // Validate Request
