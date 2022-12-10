@@ -50,7 +50,7 @@ const loadProductList = async () => {
           dataType: "json",
           success: (response) => {
             //console.log(response);
-            renderProductCard(post, response);
+            renderProductCard(post, response.result);
           },
           error: (err) => {
             console.log("Get comment list failed! " + err);
