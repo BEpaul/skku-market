@@ -17,14 +17,29 @@ $("#signup_btn").click(() => {
   } else if (password == "") {
     alert("Please input password!");
   } else {
-    alert("ok!");
-  }
+    let data = {
+      user_name: name,
+      user_nickname: nickName,
+      user_email: email,
+      user_password: password,
+    };
 
-  $.ajax({
-    type: "post",
-    url: "",
-    data: "data",
-    dataType: "dataType",
-    success: function (response) {},
-  });
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/users/",
+      data,
+      dataType: "json",
+      success: (response) => {
+        // console.log(response);
+        console.log("success!");
+      },
+      error: (err) => {
+        // console.log(err);
+        console.log("error");
+      },
+    });
+
+    alert("You have successfully registered as a member!");
+    location.href = "./login.html";
+  }
 });
