@@ -72,6 +72,43 @@ exports.findEmail = (req, res) => {
   });
 };
 
+// nickname으로 조회
+exports.findNickname = (req, res) => {
+  User.findByNickname(req.params.user_nickname, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found user with nickname ${req.params.user_nickname}.`,
+        });
+      } else {
+        res.status(500).send({
+          message:
+            "Error retrieving user with nickname " + req.params.user_nickname,
+        });
+      }
+    } else res.send(data);
+  });
+};
+
+// exports.findNickname = (req, res) => {
+//   console.log(req);
+//   User.findByNickname(req.body.user_nickname, (err, data) => {
+//     if (err) {
+//       if (err.kind === "not_found") {
+//         res.status(404).send({
+//           message: `Not found user with email ${req.body.user_nickname}.`,
+//         });
+//       } else {
+//         res.status(500).send({
+//           message: "Error retrieving user with email " + req.body.user_nickname,
+//         });
+//       }
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// };
+
 // id로 갱신
 // exports.update = (req, res) => {
 //   // Validate Request
