@@ -41,8 +41,9 @@ exports.findComments = (req, res) => {
     Comment.findByUserId(user_id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found comment with id ${req.params.commentId}.`,
+          res.status(200).send({
+            message: `Not found comment with id ${user_id}}.`,
+            result: []
           });
         } else {
           res.status(500).send({
@@ -72,8 +73,9 @@ exports.findComments = (req, res) => {
     Comment.findByPostId(post_id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
-          res.status(404).send({
-            message: `Not found comment with id ${req.params.commentId}.`,
+          res.status(200).send({
+            message: `Not found comment with id ${post_id}}.`,
+            result: []
           });
         } else {
           res.status(500).send({
