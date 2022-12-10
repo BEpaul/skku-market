@@ -17,10 +17,6 @@ exports.create = (req, res) => {
     user_password: req.body.user_password,
   });
 
-  //user existence test
-  //const from_user = User.findByID()
-  //const to_user = User.findByID()
-
   // 데이터베이스에 저장
   User.create(newUser, (err, data) => {
     if (err) {
@@ -53,18 +49,26 @@ exports.findOne = (req, res) => {
 
 // email로 조회
 exports.findEmail = (req, res) => {
-  User.findByEmail(req.params.user_email, (err, data) => {
+  User.findByEmail(req.body.user_email, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
-          message: `Not found user with email ${req.params.user_email}.`,
+          message: `Not found user with email ${req.body.user_email}.`,
         });
       } else {
         res.status(500).send({
-          message: "Error retrieving user with email " + req.params.user_email,
+          message: "Error retrieving user with email " + req.body.user_email,
         });
       }
-    } else res.send(data);
+    } else {
+      if (req.body.user_password === data.user_password) {
+        res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Not found user with email ${req.body.user_email}.`,
+        });
+      }
+    }
   });
 };
 
