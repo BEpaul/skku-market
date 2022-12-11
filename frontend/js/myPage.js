@@ -55,8 +55,6 @@ const loadComments = async () => {
                     url: `http://localhost:3000/posts/${userpost.post_id}`,
                     dataType: "json",
                     success: (response) => {
-                        
-                        
                         renderCommentList(response);
                     },
                     error: (err) => {
