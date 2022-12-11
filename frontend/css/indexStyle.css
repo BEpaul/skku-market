@@ -104,3 +104,11 @@ header {
 #title {
   text-decoration-line: none;
 }
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 30px;
+}
+#mainContents {
+  text-align: center;
+}

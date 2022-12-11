@@ -93,3 +93,15 @@ svg {
 #title {
   text-decoration-line: none;
 }
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 30px;
+  margin-top: 15%;
+  text-align: center;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  align-self: stretch;
+}
