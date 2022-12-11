@@ -50,9 +50,9 @@ const onAddPost = async () =>{
                 }),
             }).then((response) => {
                 if(response.status === 201){
-                    console.log("201" + response);
+                    console.log("201" + JSON.stringify(response));
                     alert("successfully added!!")
-                    location.href='./detail.html/'+response.post_id;
+                    location.href='../../index.html';
                 }
                 else{
                     console.log("bad: " + response);
