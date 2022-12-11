@@ -32,22 +32,17 @@ const loadProductList = async () => {
     //data: "hellow",
     dataType: "json",
     success: (response) => {
-      //console.log(response);
       if (response.length > 0) {
         const productList_div = document.querySelector(".productList");
         productList_div.innerHTML = "";
       }
 
-      //console.log("product list : " + response);
       response.forEach((post) => {
-        console.log("post each : " + post.title);
         $.ajax({
           type: "GET",
           url: `http://localhost:3000/comments?post_id=${post.post_id}`,
-          //data: "hellow",
           dataType: "json",
           success: (response) => {
-            //console.log(response);
             renderProductCard(post, response.result);
           },
           error: (err) => {
@@ -65,11 +60,8 @@ const loadProductList = async () => {
 };
 
 const renderProductCard = (post, comments) => {
-  //console.log(post.image)
   const buf = post.image;
-  //console.log(JSON.stringify(b64))
 
-  //https://stackoverflow.com/questions/4478863/show-image-from-blob-in-javascript
   const productList_div = document.querySelector(".productList");
   productList_div.innerHTML += `
   <div class="productCard" id="${post.post_id}" onclick='location.href="./frontend/html/detail.html?post_id=${post.post_id}"'>

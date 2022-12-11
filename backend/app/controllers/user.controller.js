@@ -1,7 +1,7 @@
 const User = require("../models/users.model");
 const UserPost = require("../models/userPosts.model");
 
-// 새 객체 생성
+// create new user
 exports.create = (req, res) => {
   if (!req.body) {
     res.status(400).send({
@@ -17,7 +17,7 @@ exports.create = (req, res) => {
     user_password: req.body.user_password,
   });
 
-  // 데이터베이스에 저장
+  // save to db
   User.create(newUser, (err, data) => {
     if (err) {
       res.status(500).send({
@@ -30,7 +30,7 @@ exports.create = (req, res) => {
   });
 };
 
-// id로 조회
+// get by id
 exports.findOne = (req, res) => {
   User.findByID(parseInt(req.params.user_id), (err, data) => {
     if (err) {
@@ -47,7 +47,7 @@ exports.findOne = (req, res) => {
   });
 };
 
-// email로 조회
+// get by email + login process
 exports.findEmail = (req, res) => {
   User.findByEmail(req.body.user_email, (err, data) => {
     if (err) {
@@ -72,7 +72,7 @@ exports.findEmail = (req, res) => {
   });
 };
 
-// nickname으로 조회
+// get by nickname
 exports.findNickname = (req, res) => {
   User.findByNickname(req.params.user_nickname, (err, data) => {
     if (err) {
@@ -89,75 +89,3 @@ exports.findNickname = (req, res) => {
     } else res.send(data);
   });
 };
-
-// exports.findNickname = (req, res) => {
-//   console.log(req);
-//   User.findByNickname(req.body.user_nickname, (err, data) => {
-//     if (err) {
-//       if (err.kind === "not_found") {
-//         res.status(404).send({
-//           message: `Not found user with email ${req.body.user_nickname}.`,
-//         });
-//       } else {
-//         res.status(500).send({
-//           message: "Error retrieving user with email " + req.body.user_nickname,
-//         });
-//       }
-//     } else {
-//       res.send(data);
-//     }
-//   });
-// };
-
-// id로 갱신
-// exports.update = (req, res) => {
-//   // Validate Request
-//   if (!req.body) {
-//     res.status(400).send({
-//       message: "Content can not be empty!",
-//     });
-//   }
-
-//   Comment.updateById(req.params.commentId, new Post(req.body), (err, data) => {
-//     if (err) {
-//       if (err.kind === "not_found") {
-//         res.status(404).send({
-//           message: `Not found post with id ${req.params.commentId}.`,
-//         });
-//       } else {
-//         res.status(500).send({
-//           message: "Error updating post with id " + req.params.commentId,
-//         });
-//       }
-//     } else res.send(data);
-//   });
-// };
-
-// // id로 삭제
-// exports.delete = (req, res) => {
-//   Comment.remove(req.params.commentId, (err, data) => {
-//     if (err) {
-//       if (err.kind === "not_found") {
-//         res.status(404).send({
-//           message: `Not found post with id ${req.params.commentId}.`,
-//         });
-//       } else {
-//         res.status(500).send({
-//           message: "Could not delete post with id " + req.params.commentId,
-//         });
-//       }
-//     } else res.send({ message: `the comment was deleted successfully!` });
-//   });
-// };
-
-// // 전체 삭제
-// exports.deleteAll = (req, res) => {
-//   Comment.removeAll((err, data) => {
-//     if (err)
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while removing all comments.",
-//       });
-//     else res.send({ message: `All comments were deleted successfully!` });
-//   });
-// };

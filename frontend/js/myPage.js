@@ -43,13 +43,11 @@ const loadComments = async () => {
         //data: "hellow",
         dataType: "json",
         success: (response) => {
-            //console.log(response);
             if (response.length > 0) {
                 const productList_div = document.querySelector("#userPostList");
                 productList_div.innerHTML = "";
             }
 
-            console.log("userpost list : " + JSON.stringify(response) );
             response.forEach((userpost) => {
                 
                 $.ajax({
@@ -58,7 +56,7 @@ const loadComments = async () => {
                     dataType: "json",
                     success: (response) => {
                         
-                        //console.log("post each : " + JSON.stringify(response));
+                        
                         renderCommentList(response);
                     },
                     error: (err) => {

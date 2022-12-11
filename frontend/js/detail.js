@@ -20,7 +20,6 @@ const logout = () => {
 // load
 $(function () {
   checkLogin();
-  // get path parameter
   const urlStr = window.location.href;
   const url = new URL(urlStr);
   const urlParams = url.searchParams;
@@ -93,7 +92,7 @@ $(function () {
           dataType: "json",
           success: (response) => {
             console.log("res", response);
-            // console.log("el", el);
+            
             $(".comment_list").append(
               `<li>
                     <div class='card my-4'>
@@ -142,7 +141,6 @@ $(function () {
 
   // reply button event
   $("#reply_btn").click((e) => {
-    // e.preventDefault();
 
     if (!userNickname) {
       alert("You can write a comment after logging in.");
@@ -157,7 +155,6 @@ $(function () {
       let commentData = {
         post_id: qsPostId,
         user_id_from: sessUserId,
-        //   user_id_to: "TBD",
         comment: commentValue,
       };
 

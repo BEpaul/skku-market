@@ -1,7 +1,7 @@
 const Post = require("../models/posts.model");
 const UserPost = require("../models/userPosts.model");
 
-// 새 객체 생성
+// create new post
 exports.create = (req,res)=>{
     if(!req.body){
         res.status(400).send({
@@ -19,10 +19,8 @@ exports.create = (req,res)=>{
     console.log(post.image)
 
     const posting_user_id = req.body.user_id;
-    //user existence test////////////////////////////////////////////////////
-    ///////////////////////////////////////
 
-    // 데이터베이스에 저장
+    // save to db
     Post.create(post, (err, data) =>{
         if(err){
             res.status(500).send({
@@ -57,7 +55,7 @@ exports.create = (req,res)=>{
 
 };
 
-// 전체 조회 
+// get all
 exports.findAll = (req,res)=>{
     Post.getAll((err, data) => {
         if (err)
@@ -69,7 +67,7 @@ exports.findAll = (req,res)=>{
       });
 };
 
-// id로 조회
+// get by id
 exports.findOne = (req,res)=>{
     Post.findByID(req.params.postId, (err, data) => {
         if (err) {
@@ -86,7 +84,7 @@ exports.findOne = (req,res)=>{
       });
 };
 
-// id로 갱신
+// patch by id
 exports.update = (req,res)=>{
     // Validate Request
   if (!req.body) {
@@ -114,7 +112,7 @@ exports.update = (req,res)=>{
   );
 };
 
-// id로 삭제
+// delete by id
 exports.delete = (req,res)=>{
     Post.remove(req.params.postId, (err, data) => {
         if (err) {
@@ -131,7 +129,7 @@ exports.delete = (req,res)=>{
       });
 };
 
-// 전체 삭제
+// delete all
 exports.deleteAll = (req,res)=>{
     Post.removeAll((err, data) => {
         if (err)
@@ -143,7 +141,7 @@ exports.deleteAll = (req,res)=>{
       });
 };
 
-// bas64를 blob으로 변환해주는 함수
+// bas64 to blob
 async function  b64toBlob(b64Data) {
   const buf = Buffer.from(b64Data, "base64")
   return buf;

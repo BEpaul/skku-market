@@ -1,7 +1,7 @@
 const Comment = require("../models/comments.model");
 const User = require("../models/users.model");
 
-// 새 객체 생성
+// create new comment
 exports.create = (req, res) => {
   if (!req.body) {
     res.status(400).send({
@@ -15,11 +15,8 @@ exports.create = (req, res) => {
     user_id_to: req.body.user_id_to,
     comment: req.body.comment,
   });
-  //user existence test
-  //const from_user = User.findByID()
-  //const to_user = User.findByID()
 
-  // 데이터베이스에 저장
+  // save to db
   Comment.create(newComment, (err, data) => {
     if (err) {
       res.status(500).send({
@@ -32,7 +29,7 @@ exports.create = (req, res) => {
   });
 };
 
-// 전체 조회
+// get all comments
 exports.findComments = (req, res) => {
   const user_id = req.query.user_id;
   const post_id = req.query.post_id;
@@ -72,8 +69,7 @@ exports.findComments = (req, res) => {
   }
   else if (post_id) {
 
-    //console.log("POST POST POST!")
-    // const comments_post_id = this.getByPostId(post_id);
+    
     Comment.findByPostId(post_id, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
@@ -123,7 +119,7 @@ exports.findComments = (req, res) => {
 
 
 
-// id로 조회
+// get by id
 exports.findOne = (req, res) => {
   Comment.findByID(req.params.commentId, (err, data) => {
     if (err) {
@@ -140,7 +136,7 @@ exports.findOne = (req, res) => {
   });
 };
 
-// id로 갱신
+// patch with id
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -164,7 +160,7 @@ exports.update = (req, res) => {
   });
 };
 
-// id로 삭제
+// delete by id
 exports.delete = (req, res) => {
   Comment.remove(req.params.commentId, (err, data) => {
     if (err) {
@@ -181,7 +177,7 @@ exports.delete = (req, res) => {
   });
 };
 
-// 전체 삭제
+// delete all
 exports.deleteAll = (req, res) => {
   Comment.removeAll((err, data) => {
     if (err)

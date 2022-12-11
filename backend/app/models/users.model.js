@@ -91,18 +91,5 @@ User.findByNickname = (userNickname, result) => {
   );
 };
 
-// // user 전체 조회
-// User.getAll = (result) => {
-//   sql.query("SELECT * FROM users", (err, res) => {
-//     if (err) {
-//       console.log("error: ", err);
-//       result(err, null);
-//       return;
-//     }
-
-//     console.log("user: ", res);
-//     result(null, res);
-//   });
-// };
 
 module.exports = User;

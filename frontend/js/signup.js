@@ -30,11 +30,9 @@ $("#signup_btn").click(() => {
       data,
       dataType: "json",
       success: (response) => {
-        // console.log(response);
         console.log("success!");
       },
       error: (err) => {
-        // console.log(err);
         console.log("error");
       },
     });
