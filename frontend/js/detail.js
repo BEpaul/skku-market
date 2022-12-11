@@ -64,24 +64,38 @@ ${userNickname}`);
       console.log(newArr);
 
       newArr.forEach((el) => {
-        console.log(el);
-        $(".comment_list").append(
-          `<li>
-              <div class='card my-4'>
-                  <h5 class='card-header'>
-                      <div class='com_userInfo'><i class='bi bi-person-circle' id='user_profile'></i>
-                          junehyon</div>
-                  </h5>
-                  <div class='card-body'>
-                      <form name='comment-form' autocomplete='off'>
-                          <div class='form-group'>
-                              <div class='commentList_content'>${el.comment}</div>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </li>`
-        );
+        console.log("el.user_id_from", el.user_id_from);
+
+        $.ajax({
+          type: "GET",
+          url: `http://localhost:3000/users/${el.user_id_from}}`,
+          data: "",
+          dataType: "json",
+          success: (response) => {
+            console.log("res", response);
+            // console.log("el", el);
+            $(".comment_list").append(
+              `<li>
+                    <div class='card my-4'>
+                        <h5 class='card-header'>
+                            <div class='com_userInfo'><i class='bi bi-person-circle' id='user_profile'></i>
+                                ${response.user_nickname}</div>
+                        </h5>
+                        <div class='card-body'>
+                            <form name='comment-form' autocomplete='off'>
+                                <div class='form-group'>
+                                    <div class='commentList_content'>${el.comment}</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>`
+            );
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       });
     },
     error: (err) => {
@@ -118,9 +132,11 @@ ${userNickname}`);
 
       $(".form-control").val("");
 
+      let sessUserId = sessionStorage.getItem("user_id");
+
       let commentData = {
         post_id: qsPostId,
-        //   user_id_from: userNickname,
+        user_id_from: sessUserId,
         //   user_id_to: "TBD",
         comment: commentValue,
       };
