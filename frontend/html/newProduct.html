@@ -19,17 +19,28 @@
 <body>
   <div class="container">
     <header id="header" class="d-flex flex-row justify-content-between">
-      <a id="title" href="../../index.html">
-        SKKU Market
-      </a>
-      <div id="headerBtn" class="d-flex flex-row">
-        <div id="login" class="mx-2">
-          <a href="./frontend/html/login.html">login</a>
-        </div>
-        <div id="userRegister">
-          <a href="./frontend/html/userRegister.html">sign up</a>
-        </div>
-      </div>
+      <a id="title" href="../../index.html">SKKU Market</a>
+            <div id="headerBtn-login">
+                <div id="login">
+                    <a href="./frontend/html/login.html">login</a>
+                </div>
+                <div id="userRegister">
+                    <a href="./frontend/html/signup.html">register</a>
+                </div>
+            </div>
+
+            <div id="headerBtn-logout">
+                <div id="userInfo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                        class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                    </svg>
+                    <a id="userInfoText" href="javascript:void(0)">user info</a>
+                </div>
+                <div id="logout">
+                    <a href="javascript:void(0)" onclick="logout();">logout</a>
+                </div>
+            </div>
     </header>
     <div id="mainContents" class="">
       <div id="mainTitle" class="d-flex justify-content-center mt-5">

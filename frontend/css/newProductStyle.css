@@ -21,20 +21,42 @@ header {
   font-weight: 800;
   color: #0b471b;
 }
-#headerBtn a {
+svg {
+  color: #0b471b;
+  padding-bottom: 1px;
+} 
+#headerBtn-login,
+#headerBtn-logout {
+  display: flex;
+  flex-direction: row;
+}
+#headerBtn-logout {
+  display: none;
+}
+
+#headerBtn-login a,
+#headerBtn-logout a {
   text-decoration: none;
 }
-#headerBtn a:link {
+#headerBtn-login a:link,
+#headerBtn-logout a:link {
   color: #0b471b;
 }
-#headerBtn a:visited {
+#headerBtn-login a:visited,
+#headerBtn-logout a:visited {
   color: #0b471b;
 }
-#headerBtn a:hover {
+#headerBtn-login a:hover,
+#headerBtn-logout a:hover {
   color: #0b471b;
 }
-#headerBtn a:active {
+#headerBtn-login a:active,
+#headerBtn-logout a:active {
   color: #0b471b;
+}
+#userInfo,
+#login {
+  margin-right: 1.5rem;
 }
 
 #mainTitle {

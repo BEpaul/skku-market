@@ -1,6 +1,22 @@
 //file to Base64 ref
 // https://stackoverflow.com/questions/17710147/image-convert-to-base64
+const checkLogin = () => {
+    const user_id = sessionStorage.getItem("user_id");
+    if (user_id) {
+      $("#headerBtn-login").css("display", "none");
+      $("#headerBtn-logout").css("display", "flex");
+      $("#userInfoText").html(sessionStorage.getItem("nickname"));
+    } else {
+      $("#headerBtn-login").css("display", "flex");
+      $("#headerBtn-logout").css("display", "none");
+    }
+  };
 
+const logout = () => {
+    sessionStorage.removeItem("user_id")
+    sessionStorage.removeItem("nickname")
+    location.href = "../../index.html"
+}
 
 const onAddPost = async () =>{
     const curr_user_id = sessionStorage.getItem("user_id");
@@ -64,6 +80,7 @@ const convertBase64 = (file) =>{
 }
 
 $(document).ready(function () {
+    checkLogin();
     const curr_user_id = sessionStorage.getItem("user_id");
     console.log(curr_user_id)
     if(!curr_user_id){
