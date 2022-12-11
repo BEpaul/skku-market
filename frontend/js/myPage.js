@@ -4,7 +4,7 @@ const checkLogin = () => {
     const user_id = sessionStorage.getItem("user_id");
     if (!user_id) {
         alert("Login First!!!")
-        location.href = "./login.js"
+        location.href = "./login.html"
     }
 }
 
