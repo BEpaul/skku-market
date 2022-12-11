@@ -24,7 +24,7 @@ header {
 svg {
   color: #0b471b;
   padding-bottom: 1px;
-} 
+}
 #headerBtn-login,
 #headerBtn-logout {
   display: flex;
@@ -101,4 +101,11 @@ svg {
 
 #title {
   text-decoration-line: none;
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  padding: 30px;
+  margin-top: 8%;
+  text-align: center;
 }
