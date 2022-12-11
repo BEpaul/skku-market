@@ -60,6 +60,12 @@ User.findByEmail = (userEmail, result) => {
         result(null, res[0]);
         return;
       }
+      else{
+        err = {};
+        err.kind = "not_found";
+        result(err, null);
+        return;
+      }
     }
   );
 };
