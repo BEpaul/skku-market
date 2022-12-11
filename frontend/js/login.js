@@ -24,7 +24,7 @@ $("#login_button").click(() => {
           console.log(response.user_nickname);
           sessionStorage.setItem("user_id", response.user_id);
           sessionStorage.setItem("nickname", response.user_nickname);
-          history.go(-1);
+          console.log(history.go(-1));
         }
       },
       error: (err) => {
