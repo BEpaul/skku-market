@@ -11,7 +11,7 @@ const checkLogin = () => {
 const logout = () => {
     sessionStorage.removeItem("user_id")
     sessionStorage.removeItem("nickname")
-    location.href = "."
+    location.href = "../../index.html"
 }
 
 const loadUserInfo = async () => {
