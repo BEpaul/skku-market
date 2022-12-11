@@ -9,7 +9,7 @@ header {
   width: auto;
   font-family: "Montserrat", sans-serif;
   margin-top: 1px;
-  align-self: start;
+  align-self: stretch;
 }
 #title {
   font-size: 1.25rem;
@@ -32,6 +32,45 @@ header {
 #headerBtn a:active {
   color: #0b471b;
 }
+
+svg {
+  color: #0b471b;
+  padding-bottom: 1px;
+} 
+#headerBtn-login,
+#headerBtn-logout {
+  display: flex;
+  flex-direction: row;
+}
+#headerBtn-logout {
+  display: none;
+}
+
+#headerBtn-login a,
+#headerBtn-logout a {
+  text-decoration: none;
+}
+#headerBtn-login a:link,
+#headerBtn-logout a:link {
+  color: #0b471b;
+}
+#headerBtn-login a:visited,
+#headerBtn-logout a:visited {
+  color: #0b471b;
+}
+#headerBtn-login a:hover,
+#headerBtn-logout a:hover {
+  color: #0b471b;
+}
+#headerBtn-login a:active,
+#headerBtn-logout a:active {
+  color: #0b471b;
+}
+#userInfo,
+#login {
+  margin-right: 1.5rem;
+}
+
 
 #reply_btn {
   color: #0b471b;

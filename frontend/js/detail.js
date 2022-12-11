@@ -1,5 +1,25 @@
+const checkLogin = () => {
+  const user_id = sessionStorage.getItem("user_id");
+  if (user_id) {
+    $("#headerBtn-login").css("display", "none");
+    $("#headerBtn-logout").css("display", "flex");
+    $("#userInfoText").html(sessionStorage.getItem("nickname"));
+  } else {
+    $("#headerBtn-login").css("display", "flex");
+    $("#headerBtn-logout").css("display", "none");
+  }
+};
+
+const logout = () => {
+  sessionStorage.removeItem("user_id");
+  sessionStorage.removeItem("nickname");
+  location.href = "../../index.html";
+};
+
+
 // load
 $(function () {
+  checkLogin();
   // get path parameter
   const urlStr = window.location.href;
   const url = new URL(urlStr);
@@ -12,7 +32,7 @@ $(function () {
   if (userNickname) {
     $(".com_userInfo")
       .append(`<i class="bi bi-person-circle" id="user_profile"></i>
-${userNickname}`);
+        ${userNickname}`);
   } else {
     $(".com_userInfo").append(`You can write a comment after logging in.
 `);
