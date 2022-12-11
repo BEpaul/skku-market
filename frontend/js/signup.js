@@ -40,6 +40,6 @@ $("#signup_btn").click(() => {
     });
 
     alert("You have successfully registered as a member!");
-    location.href = "./login.html";
+    location.href = "../../index.html";
   }
 });

@@ -1,78 +1,82 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  max-width: 99%;
+}
+#mainContents {
+  width: 70%;
+  height: 100%;
+  justify-content: center;
+}
 
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px;
-    max-width: 99%;
+header {
+  width: auto;
+  font-family: "Montserrat", sans-serif;
+  align-self: stretch;
 }
-#mainContents{
-    width: 70%;
-    height: 100%;
-    justify-content: center;
+#title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0b471b;
 }
-
-header{
-    width: auto;
-    font-family: 'Montserrat', sans-serif;
-    align-self: stretch;
-}
-#title{
-    font-size: 1.25rem;
-    font-weight: 800;
-    color:#0b471b;
-}
-#headerBtn a{
-    text-decoration: none;
-    
+#headerBtn a {
+  text-decoration: none;
 }
 #headerBtn a:link {
-    color : #0b471b;
+  color: #0b471b;
 }
 #headerBtn a:visited {
-    color : #0b471b;
+  color: #0b471b;
 }
 #headerBtn a:hover {
-    color : #0b471b;
+  color: #0b471b;
 }
 #headerBtn a:active {
-    color : #0b471b
+  color: #0b471b;
 }
 
-#mainTitle{
-    margin-bottom: 3rem;
-    border-bottom: solid 1px #d4d4d4;
+#mainTitle {
+  margin-bottom: 3rem;
+  border-bottom: solid 1px #d4d4d4;
 }
 
-.mb-3 .form-label{
-    margin-left: 3px;
+.mb-3 .form-label {
+  margin-left: 3px;
 }
-#fileInputBox, #postTitleBox, #priceBox, #postContentBox{
-    border-bottom: solid 1px #d4d4d4;
-    padding: 0px 1.25rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-}
-
-#fileInputBox input{
-    margin-bottom: 1rem;
-    
+#fileInputBox,
+#postTitleBox,
+#priceBox,
+#postContentBox {
+  border-bottom: solid 1px #d4d4d4;
+  padding: 0px 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
 }
 
-#priceBox input{
-    border: none;
+#fileInputBox input {
+  margin-bottom: 1rem;
 }
-#postTitleBox input{
-    border: none;
+
+#priceBox input {
+  border: none;
 }
-#postContentBox textarea{
-    border: none;
-    resize: none;
-    height: 16.25em;
+#postTitleBox input {
+  border: none;
 }
-.btn{
-    border: none;
-    background-color: transparent;
-    font-weight: 700;
-    color: #0b471b;
+#postContentBox textarea {
+  border: none;
+  resize: none;
+  height: 16.25em;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  color: #0b471b;
+}
+
+#title {
+  text-decoration-line: none;
 }

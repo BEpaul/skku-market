@@ -64,6 +64,27 @@ User.findByEmail = (userEmail, result) => {
   );
 };
 
+// user nickname으로 조회 (로그인)
+User.findByNickname = (userNickname, result) => {
+  sql.query(
+    "SELECT * FROM Users WHERE user_nickname = ?",
+    userNickname,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+
+      if (res.length) {
+        console.log("found user: ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+    }
+  );
+};
+
 // // user 전체 조회
 // User.getAll = (result) => {
 //   sql.query("SELECT * FROM users", (err, res) => {

@@ -74,7 +74,13 @@ img {
   font-weight: 600;
 }
 
-.content,
+.content {
+  padding: 5px;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .title,
 .comments {
   padding: 5px;
@@ -86,8 +92,9 @@ img {
 
 .price {
   font-weight: 550;
+  font-size: 18px;
   padding: 5px;
-  text-align: left;
+  text-align: right;
   margin-top: 10px;
   margin-bottom: 10px;
   border-top: 1px solid lightgray;
